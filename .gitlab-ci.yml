@@ -1,0 +1,14 @@
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+pages:
+  stage: deploy
+  script:
+    - mkdir public
+    - cp -R itstool public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
